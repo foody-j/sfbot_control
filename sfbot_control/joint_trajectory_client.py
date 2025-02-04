@@ -61,7 +61,7 @@ def main(args=None):
     action_client = JointTrajectoryActionClient()
     
     # Send a goal to move to position 1.0
-    action_client.send_goal(0.1)
+    action_client.send_goal(3.14)
     
     rclpy.spin(action_client)
 
