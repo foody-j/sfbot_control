@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'joint_trajectory_client = sfbot_control.joint_trajectory_client:main'
+            'joint_trajectory_client = sfbot_control.joint_trajectory_client_six:main',
+            'keyboard_joint_controller = sfbot_control.keyboard_joint_controller:main',
+            'robot_arm_controller = robot_arm_controller.py:main',
         ],
     },
 )
