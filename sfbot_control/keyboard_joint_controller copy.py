@@ -23,10 +23,6 @@ class KeyboardJointController(Node):
             'joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6'
         ]
         self.joint_positions = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # 초기 위치
-        self.small_increment = 0.314
-        self.large_increment = 3.14
-        self.current_increment = self.small_increment
-        self.large_increment_mode = False
 
         self.settings = termios.tcgetattr(sys.stdin)
 
@@ -85,48 +81,34 @@ class KeyboardJointController(Node):
         print("joint 5: Y/H")
         print("joint 6: U/J")
         print("---------------------------")
-        print("Q: Toggle increment between 0.314 and 3.14")
-        print("O: Reset all joint positions to 0.0")
         print("Press CTRL-C to quit")
 
         while rclpy.ok():
             key = self.getKey()
             if key == 'w':
-                self.joint_positions[0] += self.current_increment
+                self.joint_positions[0] += 0.314
             elif key == 's':
-                self.joint_positions[0] -= self.current_increment
+                self.joint_positions[0] -= 0.314
             elif key == 'e':
-                self.joint_positions[1] += self.current_increment
+                self.joint_positions[1] += 0.314
             elif key == 'd':
-                self.joint_positions[1] -= self.current_increment
+                self.joint_positions[1] -= 0.314
             elif key == 'r':
-                self.joint_positions[2] += self.current_increment
+                self.joint_positions[2] += 0.314
             elif key == 'f':
-                self.joint_positions[2] -= self.current_increment
+                self.joint_positions[2] -= 0.314
             elif key == 't':
-                self.joint_positions[3] += self.current_increment
+                self.joint_positions[3] += 0.314
             elif key == 'g':
-                self.joint_positions[3] -= self.current_increment
+                self.joint_positions[3] -= 0.314
             elif key == 'y':
-                self.joint_positions[4] += self.current_increment
+                self.joint_positions[4] += 0.314
             elif key == 'h':
-                self.joint_positions[4] -= self.current_increment
+                self.joint_positions[4] -= 0.314
             elif key == 'u':
-                self.joint_positions[5] += self.current_increment
+                self.joint_positions[5] += 0.314
             elif key == 'j':
-                self.joint_positions[5] -= self.current_increment
-            elif key == 'q':
-                if self.large_increment_mode:
-                    self.current_increment = self.small_increment
-                    self.large_increment_mode = False
-                    print("Increment set to 0.314")
-                else:
-                    self.current_increment = self.large_increment
-                    self.large_increment_mode = True
-                    print("Increment set to 3.14")
-            elif key == 'o':
-                self.joint_positions = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-                print("All joint positions reset to 0.0")
+                self.joint_positions[5] -= 0.314
             elif key == '\x03':  # CTRL-C
                 break
 
