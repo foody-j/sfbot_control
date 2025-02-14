@@ -22,7 +22,9 @@ setup(
         'console_scripts': [
             'joint_trajectory_client = sfbot_control.joint_trajectory_client_six:main',
             'keyboard_joint_controller = sfbot_control.keyboard_joint_controller:main',
-            'robot_arm_controller = robot_arm_controller.py:main',
+            'robot_arm_controller = sfbot_control.robot_arm_controller:main',
+            'circle_controll = sfbot_control.circle_controll:main',
+            'keyborad = sfbot_control.foward_keyborad_controller:main',
         ],
     },
 )
