@@ -110,6 +110,18 @@ class KeyboardJointController(Node):
             elif key == 'j':
                 self.joint_positions[5] -= self.current_increment
                 movement_detected = True
+            elif key == 'z':
+                try:
+                    print("Enter 6 joint positions separated by spaces (e.g., 0.0 0.0 0.0 0.0 0.0 0.0):")
+                    input_positions = input()
+                    positions = list(map(float, input_positions.split()))
+                    if len(positions) != 6:
+                        print("Error: Please enter exactly 6 values.")
+                        continue
+                    self.joint_positions = positions
+                    movement_detected = True
+                except ValueError:
+                    print("Error: Invalid input. Please enter numeric values.")
             elif key == 'q':
                 self.current_increment = self.large_increment if self.current_increment == self.small_increment else self.small_increment
                 print(f"Increment set to {self.current_increment}")
